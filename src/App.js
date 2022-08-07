@@ -8,7 +8,7 @@ function App() {
       <div className={active ? 'w-12 ease-in-out duration-300 bg-black h-screen' : 'w-72 bg-black h-screen ease-in-out duration-300'}>
         <div className='flex items-center justify-between px-2 pt-2'>
           <div className='cursor-pointer' onClick={() => setActive(!active)}>logo</div>
-          <button onClick={() => setActive(!active)} className={active ? 'hidden' : 'block'}>=</button>
+          <button onClick={() => setActive(!active)} className={active ? 'hidden ease-in-out duration-700' : 'block ease-in-out duration-700'}>=</button>
         </div>
       </div>
       <div className='w-full text-black'>
