@@ -1,0 +1,39 @@
+.collapse {
+  background-color: white;
+  width: 100%;
+  height: 40px;
+  border-radius: 5px;
+  padding: 20px;
+}
+.collapse__header {
+  padding-left: 10px;
+  color: black;
+  padding-right: 10px;
+  height: 50px;
+  background-color: #f2f2f2;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 2px;
+}
+
+.collapse__svg {
+  width: 15px;
+  height: 15px;
+}
+.collapse__content {
+  padding: 10px;
+  height: 0px;
+  transition-duration: 0.2s;
+  transition-property: all;
+  opacity: 0;
+}
+
+.collapse__checkbox {
+  display: none;
+}
+
+.collapse__checkbox:checked + label + .collapse__content {
+  height: 80px;
+  opacity: 1;
+}
