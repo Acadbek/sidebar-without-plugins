@@ -44,7 +44,7 @@ function Sidebar({ textOpen, openWithBtn }) {
           className="flex items-start gap-12 w-[280px] text-white py-2"
         >
           <button onClick={() => openWithBtn(val)}>
-            <img src={val?.img} alt="" />
+            <img src={val?.img} alt=" s" />
           </button>
           <div className={textOpen ? "hidden" : ""}>
             <p className="text-black">{val?.name}</p>
