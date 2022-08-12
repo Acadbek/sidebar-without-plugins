@@ -134,7 +134,7 @@ function App() {
 				<div className='flex items-center justify-between px-2 pt-2'>
 					<div className='cursor-pointer' onClick={toggleWithLogo}>
 						{/* <img width={150} src='' alt="LOGO" /> */}
-						<h1 className='text-[25px] first-letter:text-blue-400' style={{ fontFamily: 'Silkscreen' }}>ZemCodes</h1>
+						<h1 className='text-[25px] first-letter:text-blue-400 select-none' style={{ fontFamily: 'Silkscreen' }}>ZemCodes</h1>
 					</div>
 					<button onClick={closeBtn}
 						className={active ?
