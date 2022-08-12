@@ -129,8 +129,8 @@ function App() {
 	}
 
 	return (
-		<div className="App text-white flex">
-			<div className={active ? 'w-16 ease-in-out duration-300 text-black h-screen' : 'w-[350px] bg-white text-black h-screen ease-in-out duration-300 bg-gradient-to-bl	'}>
+		<div className="App bg-slate-200 text-white flex">
+			<div className={active ? 'w-16 ease-in-out duration-300 bg-white text-black h-screen' : 'w-[350px] bg-white text-black h-screen ease-in-out duration-300 bg-gradient-to-bl	'}>
 				<div className='flex items-center justify-between px-2 pt-2'>
 					<div className='cursor-pointer' onClick={toggleWithLogo}>
 						{/* <img width={150} src='' alt="LOGO" /> */}
@@ -196,7 +196,7 @@ function App() {
 					</div>
 				</div>
 			</div>
-			<div className='w-full text-black bg-slate-200'>
+			<div className='w-full text-black bg-slate-200 pl-8'>
 				Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus accusantium praesentium incidunt recusandae saepe cum dolorem impedit eligendi aut iure excepturi aperiam similique corporis, sequi suscipit, explicabo sunt rerum soluta!
 			</div>
 		</div >
