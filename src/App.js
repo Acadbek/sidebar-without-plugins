@@ -1,115 +1,21 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import './App.css';
+import Card from './components/Card';
 import MenuItem from './components/MenuItem';
-import img from './assets/svg/discord.svg'
-import img2 from './assets/svg/facebook.svg'
-import img3 from './assets/svg/figma.svg'
-import img4 from './assets/svg/google.svg'
-import img5 from './assets/svg/linkedin.svg'
-import img6 from './assets/svg/pinterest.svg'
-import img7 from './assets/svg/spotify.svg'
-import img8 from './assets/svg/telegram.svg'
-import img9 from './assets/svg/twitch.svg'
-import logo from './assets/image/logoo.png'
-import Modal from './components/Modal';
 
+import Modal from './components/Modal';
+import { Context } from './context'
 function App() {
+	const [menus, setMenus, data, setdata] = useContext(Context);
 	const [active, setActive] = useState(false);
 	const [isOpen, setIsOpen] = useState(true);
 	const [selected, setSelected] = useState(null);
 	const [modal, setModal] = useState(false)
+	const [loading, setLoading] = useState(true)
+	console.log(data, 'data');
 
 	const toggle = () => setIsOpen(!isOpen);
-	const data = [
-		{
-			title: "Discord",
-			icon: img,
-			// top: '80',
-			additionalLinks: [
-				{
-					title: "Nitro",
-				},
-				{
-					title: "Safety",
-				},
-				{
-					title: "Support",
-				},
-			],
-		},
-		{
-			title: "Facebook",
-			icon: img2,
-			additionalLinks: [
-				{
-					title: "Connect ",
-				},
-				{
-					title: "Friends",
-				},
-				{
-					title: "World",
-				},
-			],
-		},
-		{
-			title: "Figma",
-			icon: img3,
-			additionalLinks: [
-				{
-					title: "Recents ",
-				},
-				{
-					title: "Drafts",
-				},
-				{
-					title: "Community",
-				},
-			],
-		},
-		{
-			title: "Google",
-			icon: img4,
-			additionalLinks: [
-				{
-					title: "Photos ",
-				},
-				{
-					title: "Users",
-				},
-				{
-					title: "Settings",
-				},
-			],
-		},
-		{
-			title: "Twitch",
-			icon: img9,
-			additionalLinks: [
-				{
-					title: "Photos ",
-				},
-				{
-					title: "Users",
-				},
-				{
-					title: "Settings",
-				},
-			],
-		},
-		{
-			title: "Pinterest",
-			icon: img6
-		},
-		{
-			title: "Telegram",
-			icon: img8,
-		},
-		{
-			title: "Spotify",
-			icon: img7
-		},
-	];
+	// const data = 
 	const closeBtn = () => {
 		setActive(true)
 		setIsOpen(false)
@@ -133,8 +39,7 @@ function App() {
 			<div className={active ? 'w-16 ease-in-out duration-300 bg-white text-black h-screen' : 'w-[350px] bg-white text-black h-screen ease-in-out duration-300 bg-gradient-to-bl	'}>
 				<div className='flex items-center justify-between px-2 pt-2'>
 					<div className='cursor-pointer' onClick={toggleWithLogo}>
-						{/* <img width={150} src='' alt="LOGO" /> */}
-						<h1 className='text-[25px] first-letter:text-blue-400 select-none' style={{ fontFamily: 'Silkscreen' }}>ZemCodes</h1>
+						<h1 className='text-[25px] first-letter:text-blue-400 select-none' style={{ fontFamily: 'Silkscreen' }}>zemcodes</h1>
 					</div>
 					<button onClick={closeBtn}
 						className={active ?
@@ -150,7 +55,7 @@ function App() {
 				<div className='flex !w-[350px]'>
 					<div className='mt-3'>
 						<section className="!w-full">
-							{data.map((item, index) => {
+							{menus.map((item, index) => {
 								if (item?.additionalLinks) {
 									return (
 										<>
@@ -197,7 +102,15 @@ function App() {
 				</div>
 			</div>
 			<div className='w-full text-black bg-slate-200 pl-8'>
-				Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus accusantium praesentium incidunt recusandae saepe cum dolorem impedit eligendi aut iure excepturi aperiam similique corporis, sequi suscipit, explicabo sunt rerum soluta!
+				{!data ? <h1 className='text-black flex items-center justify-center h-screen text-2xl'>Loading...</h1> :
+					<div className='grid grid-cols-12 gap-4'>
+						{data?.map((item) => (
+							<div key={item.id} className='col-span-3'>
+								<Card img={item.url} avatar={item.url} title={item.name} name={item.user} date={item.id} />
+							</div>
+						))}
+					</div>
+				}
 			</div>
 		</div >
 	);
