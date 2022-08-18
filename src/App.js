@@ -11,11 +11,11 @@ function App() {
 	const [isOpen, setIsOpen] = useState(true);
 	const [selected, setSelected] = useState(null);
 	const [modal, setModal] = useState(false)
+	const [inputVl, setInputVl] = useState('')
 	const [loading, setLoading] = useState(true)
 	console.log(data, 'data');
 
 	const toggle = () => setIsOpen(!isOpen);
-	// const data = 
 	const closeBtn = () => {
 		setActive(true)
 		setIsOpen(false)
@@ -28,7 +28,6 @@ function App() {
 		setIsOpen(true)
 		setModal(false)
 	}
-
 
 	const openWithLogos = (val) => {
 		setSelected(val)
@@ -68,7 +67,7 @@ function App() {
 											/>
 											{modal
 												? <div className={`absolute top-${item?.top} left-[70px] ease-in-out duration-300`}>
-													{selected?.title === item.title ? <Modal key={item?.title} data={item?.additionalLinks} /> : ''}
+													{selected?.title === item?.title ? <Modal key={item?.title} data={item?.additionalLinks} /> : ''}
 												</div>
 												: ''}
 										</>
@@ -87,10 +86,10 @@ function App() {
 												</p>
 											)}
 										</div>
-										<div className={`absolute top-${item.top} left-[70px] ease-in-out duration-300`}>
+										<div className={`absolute top-${item?.top} left-[70px] ease-in-out duration-300`}>
 											{modal
 												? <div className={`absolute top-${item?.top} left-[70px] ease-in-out duration-300`}>
-													{selected?.title === item.title ? <Modal key={item?.title} data={item?.additionalLinks} /> : ''}
+													{selected?.title === item?.title ? <Modal key={item?.title} data={item?.additionalLinks} /> : ''}
 												</div>
 												: ''}
 										</div>
@@ -102,11 +101,19 @@ function App() {
 				</div>
 			</div>
 			<div className='w-full text-black bg-slate-200 pl-8'>
+				<div className='flex justify-between items-center py-[12px]'>
+					<input onChange={({ target }) => setInputVl(target.value.toLocaleLowerCase())} type="text" className='w-[574px] h-[32px] border outline-none px-2 py-2 border-blue-400' />
+					<div className='flex gap-2'>
+						<span>icon</span>
+						<span>icon</span>
+						<span>icon</span>
+					</div>
+				</div>
 				{!data ? <h1 className='text-black flex items-center justify-center h-screen text-2xl'>Loading...</h1> :
 					<div className='grid grid-cols-12 gap-4'>
-						{data?.map((item) => (
-							<div key={item.id} className='col-span-3'>
-								<Card img={item.url} avatar={item.url} title={item.name} name={item.user} date={item.id} />
+						{data?.map((item) => item?.name.toLowerCase().includes(inputVl) && (
+							<div key={item?.id} className='col-span-3'>
+								<Card img={item?.url} avatar={item?.url} title={item?.name} name={item?.user} date={item?.id} />
 							</div>
 						))}
 					</div>
