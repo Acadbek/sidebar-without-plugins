@@ -102,7 +102,7 @@ function App() {
 			</div>
 			<div className='w-full text-black bg-slate-200 pl-8'>
 				<div className='flex justify-between items-center py-[12px]'>
-					<input onChange={({ target }) => setInputVl(target.value.toLocaleLowerCase())} type="text" className='w-[574px] h-[32px] border outline-none px-2 py-2 border-blue-400' />
+					<input placeholder='Search...' onChange={({ target }) => setInputVl(target.value.toLocaleLowerCase())} type="text" className='w-[574px] h-[32px] border outline-none px-2 py-2 border-blue-400' />
 					<div className='flex gap-2'>
 						<span>icon</span>
 						<span>icon</span>
