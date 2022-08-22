@@ -1,20 +1,13 @@
 import React, { useState, useEffect } from "react";
+import { Link, NavLink } from "react-router-dom";
 
 const SidebarMenu = ({ openWithLogos, data, isOpen, setIsOpen }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [isOpenModal, setOpenModal] = useState(false);
-  const [selected, setSelected] = useState(null);
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
     setIsOpen(true);
   };
-
-  // const openWithLogos = (val) => {
-  //   setSelected(val);
-  //   setOpenModal(true);
-  // };
-  // console.log(selected);
 
   useEffect(() => {
     if (!isOpen) {
@@ -53,10 +46,13 @@ const SidebarMenu = ({ openWithLogos, data, isOpen, setIsOpen }) => {
       {isMenuOpen && (
         <>
           {data.additionalLinks.map((item, i) => (
-            <div key={i} className="flex cursor-pointer ">
-              <p className="ml-[70px] text-gray-800 text-[18px] select-none mt-1 w-full shadow py-1 pl-1">
+            <div key={i} className="flex cursor-pointer">
+              <NavLink
+                to={item.title}
+                className="ml-[70px] text-gray-800 text-[18px] select-none mt-1 w-full shadow py-1 pl-1"
+              >
                 {item?.title}
-              </p>
+              </NavLink>
             </div>
           ))}
         </>

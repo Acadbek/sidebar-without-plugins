@@ -1,3 +1,4 @@
+import Root from './Routes';
 import React, { useState, useContext } from 'react';
 import './App.css';
 import Card from './components/Card';
@@ -5,6 +6,11 @@ import MenuItem from './components/MenuItem';
 
 import Modal from './components/Modal';
 import { Context } from './context'
+// import { Link } from 'react-router-dom';
+import { Link } from './styles/styles'
+import { NavLink } from 'react-router-dom';
+
+
 function App() {
 	const [menus, setMenus, data, setdata] = useContext(Context);
 	const [active, setActive] = useState(false);
@@ -81,9 +87,9 @@ function App() {
 										>
 											<img className='ml-3' onClick={() => setSelected(item)} width={35} height={35} src={item?.icon} alt="" />
 											{isOpen && (
-												<p className='text ml-6 select-none'>
+												<NavLink to={item.title} className='text ml-6 select-none'>
 													{item?.title}
-												</p>
+												</NavLink>
 											)}
 										</div>
 										<div className={`absolute top-${item?.top} left-[70px] ease-in-out duration-300`}>
@@ -101,6 +107,8 @@ function App() {
 				</div>
 			</div>
 			<div className='w-full text-black bg-slate-200 pl-8'>
+				<Root />
+
 				<div className='flex justify-between items-center py-[12px]'>
 					<input placeholder='Search...' onChange={({ target }) => setInputVl(target.value.toLocaleLowerCase())} type="text" className='w-[574px] h-[32px] border outline-none px-2 py-2 border-blue-400' />
 					<div className='flex gap-2'>

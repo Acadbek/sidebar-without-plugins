@@ -1,5 +1,5 @@
 import React from 'react'
-import { createContext, useState, useEffect } from 'react'
+import { createContext, useState } from 'react'
 import img from './assets/svg/discord.svg'
 import img2 from './assets/svg/facebook.svg'
 import img3 from './assets/svg/figma.svg'
